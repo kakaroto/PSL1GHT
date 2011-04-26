@@ -50,4 +50,14 @@ PACKAGE_FINALIZE := package_finalize
 	$(VERB) $(CGCOMP) -f $^ $@
 
 %.pkg: %.self
-	@echo building pkg ... $(notdir $@)
+	@echo "[PKG] $(notdir $@)"
+	@mkdir -p $(BUILDDIR)/pkg
+	@mkdir -p $(BUILDDIR)/pkg/USRDIR
+	@cp $(ICON0) $(BUILDDIR)/pkg/
+	@$(SELF_NPDRM) $(basename $<).elf $(BUILDDIR)/pkg/USRDIR/EBOOT.BIN $(CONTENTID) >> /dev/null
+	@$(SFO) --title "$(TITLE)" --appid "$(APPID)" -f $(SFOXML) $(BUILDDIR)/pkg/PARAM.SFO
+	@if test -n "$(PKGFILES)" -a -d "$(PKGFILES)"; then cp -rf $(PKGFILES)/* $(BUILDDIR)/pkg/; fi
+	@$(PKG) --contentid $(CONTENTID) $(BUILDDIR)/pkg/ $@ >> /dev/null
+	@echo "[PKG] $(basename $(notdir $@)).geohot.pkg"
+	@cp $@ $(basename $@).geohot.pkg
+	@$(PACKAGE_FINALIZE) $(basename $@).geohot.pkg
