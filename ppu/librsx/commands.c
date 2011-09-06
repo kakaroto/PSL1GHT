@@ -842,6 +842,26 @@ void rsxSetBlendEnable(gcmContextData *context,u32 enable)
 	RSX_CONTEXT_CURRENT_END(2);
 }
 
+void rsxSetLogicOpEnable (gcmContextData *context, u32 enable)
+{
+	RSX_CONTEXT_CURRENT_BEGIN(2);
+
+	RSX_CONTEXT_CURRENTP[0] = RSX_METHOD(NV40TCL_COLOR_LOGIC_OP_ENABLE,1);
+	RSX_CONTEXT_CURRENTP[1] = enable;
+
+	RSX_CONTEXT_CURRENT_END(2);
+}
+
+void rsxSetAlphaTestEnable (gcmContextData *context, u32 enable)
+{
+	RSX_CONTEXT_CURRENT_BEGIN(2);
+
+	RSX_CONTEXT_CURRENTP[0] = RSX_METHOD(NV40TCL_ALPHA_TEST_ENABLE,1);
+	RSX_CONTEXT_CURRENTP[1] = enable;
+
+	RSX_CONTEXT_CURRENT_END(2);
+}
+
 void rsxSetTransformBranchBits(gcmContextData *context,u32 branchBits)
 {
 	RSX_CONTEXT_CURRENT_BEGIN(2);
