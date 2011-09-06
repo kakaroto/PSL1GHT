@@ -819,7 +819,7 @@ void rsxSetBlendEquation(gcmContextData *context,u16 color,u16 alpha)
 	RSX_CONTEXT_CURRENT_END(2);
 }
 
-void rsxSetBlendColor(gcmContextData *context,u16 color0,u16 color1)
+void rsxSetBlendColor(gcmContextData *context,u32 color0,u32 color1)
 {
 	RSX_CONTEXT_CURRENT_BEGIN(4);
 

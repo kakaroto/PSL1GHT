@@ -241,7 +241,7 @@ void rsxInlineTransfer(gcmContextData *context,const u32 dstOffset,const void *s
 void rsxSetUserClipPlaneControl(gcmContextData *context,u32 plane0,u32 plane1,u32 plane2,u32 plane3,u32 plane4,u32 plane5);
 void rsxSetBlendFunc(gcmContextData *context,u16 sfcolor,u16 dfcolor,u16 sfalpha,u16 dfalpha);
 void rsxSetBlendEquation(gcmContextData *context,u16 color,u16 alpha);
-void rsxSetBlendColor(gcmContextData *context,u16 color0,u16 color1);
+void rsxSetBlendColor(gcmContextData *context,u32 color0,u32 color1);
 void rsxSetBlendEnable(gcmContextData *context,u32 enable);
 void rsxSetTransformBranchBits(gcmContextData *context,u32 branchBits);
 
